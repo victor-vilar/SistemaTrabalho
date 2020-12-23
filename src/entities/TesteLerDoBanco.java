@@ -15,13 +15,18 @@ public class TesteLerDoBanco {
 	SalvarClientes.salvarCliente(ime);
 	SalvarClientes.salvarCliente(cig);
 	
-	SalvarClientes.getNomeClientes();
-	
+
 	try {
-		SalvarClientes.lerInformacoesBanco();
+		SalvarClientes.salvarClientesBanco();
 	}catch(IOException ex) {
-		System.out.println(ex);
+		
 	}
+	
+//	try {
+//		SalvarClientes.lerInformacoesBanco();
+//	}catch(IOException ex) {
+//		System.out.println(ex);
+//	}
 	
 	
 	
