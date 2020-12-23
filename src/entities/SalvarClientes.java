@@ -11,6 +11,15 @@ public class SalvarClientes {
 		return lista.size();
 	}
 	
+	public static void getNomeClientes() {
+		for(Cliente x : lista) {
+			System.out.println(x.getNome());
+			
+			
+		}
+		
+		
+	}
 	
 	
 	
