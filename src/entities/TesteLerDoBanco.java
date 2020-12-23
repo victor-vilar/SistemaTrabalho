@@ -10,17 +10,19 @@ public class TesteLerDoBanco {
 	Cliente cig = new Cliente();
 	ime.setNome("Instituto Militar de Engenharia");
 	cig.setNome("Campo de Instrução Gericino");
+	ime.setCnpj("521452145");
+	cig.setCnpj("7845124578");
 	
 	
 	SalvarClientes.salvarCliente(ime);
 	SalvarClientes.salvarCliente(cig);
 	
-
 	try {
 		SalvarClientes.salvarClientesBanco();
-	}catch(IOException ex) {
-		
+	}catch(IOException ex){
+		System.out.println(ex);
 	}
+	
 	
 //	try {
 //		SalvarClientes.lerInformacoesBanco();

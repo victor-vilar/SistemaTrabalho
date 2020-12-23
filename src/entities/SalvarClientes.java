@@ -33,23 +33,35 @@ public class SalvarClientes {
 	public static void lerInformacoesBanco() throws IOException {
 		
 		//transforma o texto em bytes
-		InputStream is = new FileInputStream("BDClientes.txt");
-		//transforma o texto em char, ou seja em cada letra
-		InputStreamReader isr = new InputStreamReader(is);
+		InputStream is = new FileInputStream("BDClientes.txt");// le os bytes do arquivo
+		//transforma o texto em char, ou seja em cada letra // transforma em texto
+		InputStreamReader isr = new InputStreamReader(is); //pega a string
+		
 		System.out.println(is);
 			
 	}
 	
 	public static void salvarClientesBanco() throws IOException{
-		OutputStream os = new FileOutputStream("BDClientes.txt");// pega o byte
-		OutputStreamWriter osw= new OutputStreamWriter(os);// pegar o char
-		BufferedWriter bw = new BufferedWriter(osw);//pega a string
+		OutputStream os = null;
+		OutputStreamWriter osw = null;
+		BufferedWriter bw = null;
+		try {
+			os = new FileOutputStream("BDClientes.txt");// le os bytes do arquivo
+			osw= new OutputStreamWriter(os);// transforma em char
+			bw = new BufferedWriter(osw);//transforma em string		
+			for(Cliente x : lista) {
+				
+				bw.append("Nome: " + x.getNome() + " - CPF:" +x.getCpf() + " - CNPJ: " + x.getCnpj() + "\n");
+			}
+			
+			bw.close();
 		
-		for(Cliente x : lista) {
-			bw.append(x.getNome() + "\n");
+		}catch(IOException ex) {
+			System.out.println(ex);
+		
+		}finally {
+			bw.close();
 		}
-		
-		bw.close();
 	}
 	
 	
