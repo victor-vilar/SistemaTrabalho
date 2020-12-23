@@ -7,5 +7,11 @@ public class SalvarClientes {
 		lista.add(c);
 	}
 	
+	public static int getTotalClientes() {
+		return lista.size();
+	}
+	
+	
+	
 	
 }
