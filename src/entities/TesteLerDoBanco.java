@@ -1,5 +1,7 @@
 package entities;
 
+import java.io.IOException;
+
 public class TesteLerDoBanco {
 
 	public static void main( String[] args) {
@@ -15,9 +17,13 @@ public class TesteLerDoBanco {
 	
 	SalvarClientes.getNomeClientes();
 	
-	
-	
-	
+	try {
+		SalvarClientes.lerInformacoesBanco();
+	}catch(IOException ex) {
+		System.out.println(ex);
 	}
 	
+	
+	
+}
 }
