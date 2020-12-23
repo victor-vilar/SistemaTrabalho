@@ -1,5 +1,6 @@
 package entities;
 import java.util.ArrayList;
+import java.io.FileOutputStream;
 public class SalvarClientes {
 
 	private static ArrayList<Cliente> lista = new ArrayList<Cliente>();
