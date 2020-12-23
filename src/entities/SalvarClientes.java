@@ -1,6 +1,14 @@
 package entities;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+
 import java.io.FileOutputStream;
+
+
+
 public class SalvarClientes {
 
 	private static ArrayList<Cliente> lista = new ArrayList<Cliente>();
@@ -17,11 +25,20 @@ public class SalvarClientes {
 			System.out.println(x.getNome());
 			
 			
-		}
-		
-		
+		}		
 	}
 	
+	
+	public static void lerInformacoesBanco() throws IOException {
+		
+			//transforma o texto em bytes
+			InputStream is = new FileInputStream("BDClientes.txt");
+			//transforma o texto em char, ou seja em cada letra
+			InputStreamReader isr = new InputStreamReader(is);
+			System.out.println(is);
+			
+		
+	}
 	
 	
 }
