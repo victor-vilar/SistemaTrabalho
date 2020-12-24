@@ -1,4 +1,5 @@
 package br.com.landtecengenharia.sistemaInterno.cliente;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,18 +27,19 @@ public class SalvarClientes {
 		for(Cliente x : lista) {
 			System.out.println(x.getNome());
 			
-			
 		}		
 	}
 	
 	public static void lerInformacoesBanco() throws IOException {
 		
-		//transforma o texto em bytes
-		InputStream is = new FileInputStream("BDClientes.txt");// le os bytes do arquivo
-		//transforma o texto em char, ou seja em cada letra // transforma em texto
-		InputStreamReader isr = new InputStreamReader(is); //pega a string
+		InputStream is = new FileInputStream("BDClientes.txt");
+		InputStreamReader isr = new InputStreamReader(is); 
+		BufferedReader inp = new BufferedReader(isr);
+		//lista.append(inp.readLine());
 		
-		System.out.println(is);
+		
+		System.out.println(inp.readLine());
+		System.out.println(inp.readLine());
 			
 	}
 	
@@ -50,10 +52,8 @@ public class SalvarClientes {
 			osw= new OutputStreamWriter(os);// transforma em char
 			bw = new BufferedWriter(osw);//transforma em string		
 			for(Cliente x : lista) {
-				
 				bw.append("Nome: " + x.getNome() + " - CPF:" +x.getCpf() + " - CNPJ: " + x.getCnpj() + "\n");
 			}
-			
 			bw.close();
 		
 		}catch(IOException ex) {
