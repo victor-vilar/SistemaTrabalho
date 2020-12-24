@@ -1,4 +1,4 @@
-package entities;
+package br.com.landtecengenharia.sistemaInterno.cliente;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

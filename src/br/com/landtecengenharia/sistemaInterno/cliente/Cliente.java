@@ -1,4 +1,4 @@
-package entities;
+package br.com.landtecengenharia.sistemaInterno.cliente;
 
 public class Cliente {
 
