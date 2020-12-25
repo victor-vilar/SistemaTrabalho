@@ -1,4 +1,6 @@
-package entities;
+package br.com.landtecengenharia.sistemaInterno.cliente;
+
+import java.io.IOException;
 
 public class TesteDeCliente {
 
@@ -14,7 +16,11 @@ public class TesteDeCliente {
 	
 	
 	SalvarClientes.getNomeClientes();
-	
+	try {
+		SalvarClientes.lerInformacoesBanco();
+	}catch(IOException ex) {
+		System.out.println(ex);
+	}
 	
 	
 	

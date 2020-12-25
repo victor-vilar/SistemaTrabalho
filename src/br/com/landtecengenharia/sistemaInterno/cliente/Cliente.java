@@ -1,6 +1,12 @@
-package entities;
+<<<<<<< HEAD:src/entities/Cliente.java
+package br.com.landtecengenharia.sistemaInterno.cliente;
 import java.io.Serializable;
 public class Cliente implements Serializable{
+=======
+
+
+public class Cliente {
+>>>>>>> 8adfdb4eaa3f8d5d282e38dd755794566e31490d:src/br/com/landtecengenharia/sistemaInterno/cliente/Cliente.java
 
 	private String nome;
 	private String cpf;
