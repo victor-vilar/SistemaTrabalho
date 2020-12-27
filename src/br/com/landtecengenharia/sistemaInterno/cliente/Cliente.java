@@ -2,9 +2,6 @@ package br.com.landtecengenharia.sistemaInterno.cliente;
 import java.io.Serializable;
 public class Cliente implements Serializable{
 
-
-
-
 	private String nome;
 	private String cpf;
 	private String cnpj;
@@ -14,11 +11,9 @@ public class Cliente implements Serializable{
 	private String telefone;
 	private String email;
 	
-	
-	
+
 	public Cliente() {
-		
-		
+				
 	}
 
 	public String getNome() {
