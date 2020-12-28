@@ -3,8 +3,7 @@ import javax.swing.JFrame;
 
 public class FormularioBorderLayout {
 	JFrame form = new JFrame();
-	
-	
+		
 	public FormularioBorderLayout() {
 		form.setTitle("Título da Janela");
 		form.setSize(700,600);
