@@ -21,7 +21,7 @@ public class FormularioDeCadastroDeClientes implements ActionListener {
 		frame = new JFrame();
 		botaoSalvar = new JButton("Salvar");
 		botaoFechar = new JButton("Fechar");
-		l1 = new Label("Teste de Label");
+		l1 = new Label("Nome:");
 		nomeDoCliente = new TextField("",255);
 		
 		botaoSalvar.addActionListener(this);
@@ -33,12 +33,13 @@ public class FormularioDeCadastroDeClientes implements ActionListener {
 		frame.add(botaoSalvar);
 		frame.add(botaoFechar);
 		frame.setLayout(null);
-		botaoSalvar.setBounds(5,5,100,30);					
-		botaoFechar.setBounds(110,5,100,30);
+		frame.setResizable(false);
+		botaoSalvar.setBounds(5,225,100,30);					
+		botaoFechar.setBounds(110,225,100,30);
 		frame.add(nomeDoCliente);
 		frame.add(l1);
-		l1.setBounds(5,40, 100, 30);
-		nomeDoCliente.setBounds(5,65, 200, 20);
+		l1.setBounds(5,5, 100, 30);
+		nomeDoCliente.setBounds(5,30, 250, 20);
 		//nomeDoCliente.
 		
 			
