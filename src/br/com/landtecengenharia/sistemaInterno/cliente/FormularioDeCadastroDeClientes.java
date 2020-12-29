@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-public class FormularioDeCadastroDeClientes implements ActionListener {
+public class FormularioDeCadastroDeClientes {
 	
 	JFrame frame;
 	JButton botaoSalvar;
@@ -32,8 +32,8 @@ public class FormularioDeCadastroDeClientes implements ActionListener {
 		botaoSalvar = new JButton("Salvar");
 		botaoFechar = new JButton("Fechar");
 		//textfield
-		nomeDoCliente = new TextField("",255);
-		cnpjDoCliente = new TextField("",14);
+		nomeDoCliente = new TextField("", 255);
+		cnpjDoCliente = new TextField("", 14);
 		cpfDoCliente = new TextField("", 11);
 		
 		//----------
@@ -47,10 +47,12 @@ public class FormularioDeCadastroDeClientes implements ActionListener {
 		frame.add(cpf);
 		frame.add(cpfDoCliente);
 		//------------------------------------
+		
 		//adicionando os listeneres nos botoes
-		botaoSalvar.addActionListener(this);
-		botaoFechar.addActionListener(this);
+		botaoSalvar.addActionListener(new SaveMessengerListener());
+		botaoFechar.addActionListener(new TurnOffProgram());
 		//------------------------------------
+		
 		//informaçoes da janela
 		frame.setTitle("Cadastro de Clientes");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,6 +61,7 @@ public class FormularioDeCadastroDeClientes implements ActionListener {
 		frame.setLayout(null);
 		frame.setResizable(false);
 		//------------------------------------
+		
 		//informações dos objetos
 		//botoes
 		botaoSalvar.setBounds(5,225,100,30);					
@@ -72,16 +75,24 @@ public class FormularioDeCadastroDeClientes implements ActionListener {
 		cnpjDoCliente.setBounds(200,80, 150, 20);
 		cpfDoCliente.setBounds(5,80, 150, 20);
 		//------------------------------------
-		//nomeDoCliente.;
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == botaoSalvar) {
-			JOptionPane.showMessageDialog(null,"Cliente " + nomeDoCliente.getText() + " salvo com sucesso !");
-		}
 		
 	}
+	
+	
+	class SaveMessengerListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,"Cliente " + nomeDoCliente.getText() + " salvo com sucesso !");
+		}
+	}
+	
+	class TurnOffProgram implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		FormularioDeCadastroDeClientes form = new FormularioDeCadastroDeClientes();
