@@ -10,17 +10,31 @@ public class TesteDeCliente {
 	Cliente laqfa = new Cliente();
 	
 	c.setNome("Instituto Militar de Engenharia");
-	laqfa.setNome("Laboratorio Quimico Farmaceutico da Aeronautica");
+	c.setCnpj("0845836000178");
 	SalvarClientes.salvarCliente(c);
+	
+	laqfa.setNome("Laboratorio Quimico Farmaceutico da Aeronautica");
+	laqfa.setCnpj("0845836000178");
 	SalvarClientes.salvarCliente(laqfa);
 	
+	try {
+		SalvarClientes.salvarListaDeclientesEmTexto();
+	}catch(IOException e) {
+		
+	}
 	
 	SalvarClientes.getNomeClientes();
+	SalvarClientes.limparLista();
+	SalvarClientes.getNomeClientes();
+	
 	try {
-		SalvarClientes.lerInformacoesBanco();
-	}catch(IOException ex) {
-		System.out.println(ex);
+		SalvarClientes.lerInformacoesBancoDosObjetos();
+	}catch(IOException e) {
+		
+	}catch(ClassNotFoundException e) {
+		
 	}
+
 	
 	
 	

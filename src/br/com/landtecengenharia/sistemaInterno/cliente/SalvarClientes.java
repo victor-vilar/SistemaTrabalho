@@ -1,13 +1,12 @@
 package br.com.landtecengenharia.sistemaInterno.cliente;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 public class SalvarClientes {
 
 	private static ArrayList<Cliente> lista = new ArrayList<Cliente>();
+	
 	public static void salvarCliente(Cliente c) {
 		lista.add(c);
 	}
@@ -30,39 +30,50 @@ public class SalvarClientes {
 		}		
 	}
 	
-	public static void lerInformacoesBanco() throws IOException {
-		
-		InputStream is = new FileInputStream("BDClientes.txt");
-		InputStreamReader isr = new InputStreamReader(is); 
-		BufferedReader inp = new BufferedReader(isr);
-		//lista.append(inp.readLine());
-		
-		
-		System.out.println(inp.readLine());
-		System.out.println(inp.readLine());
-			
+	
+	public static void limparLista() {
+		lista.clear();
 	}
 	
-	public static void salvarClientesBanco() throws IOException{
-		OutputStream os = null;
-		OutputStreamWriter osw = null;
-		BufferedWriter bw = null;
-		try {
-			os = new FileOutputStream("BDClientes.txt");// le os bytes do arquivo
-			osw= new OutputStreamWriter(os);// transforma em char
-			bw = new BufferedWriter(osw);//transforma em string		
-			for(Cliente x : lista) {
-				bw.append("Nome: " + x.getNome() + " - CPF:" +x.getCpf() + " - CNPJ: " + x.getCnpj() + "\n");
+	
+	public static void lerInformacoesBancoDosObjetos() throws IOException, ClassNotFoundException {
+			File file = new File("BDClientes.ser");
+			FileInputStream fileStream = new FileInputStream(file);
+			ObjectInputStream os = new ObjectInputStream(fileStream);
+			Cliente linha = null;
+			while((linha = (Cliente)os.readObject()) != null) {
+				lista.add((Cliente)linha);
 			}
-			bw.close();
-		
-		}catch(IOException ex) {
-			System.out.println(ex);
-		
-		}finally {
-			bw.close();
-		}
+			os.close();
 	}
+	
+	
+	public static void salvarClientesBancoDosObjetos() throws IOException{
+		File file = new File("BDClientes.ser");
+		FileOutputStream fileStream = new FileOutputStream(file);
+		ObjectOutputStream os = new ObjectOutputStream(fileStream);
+		for(Cliente cliente : lista) {
+			os.writeObject(cliente);
+		}
+		os.close();
+	}
+	
+	public static void salvarListaDeclientesEmTexto() throws IOException {
+		File file = new File("BDClientes.txt");
+		FileWriter fileWriter = new FileWriter(file);
+		BufferedWriter bs = new BufferedWriter(fileWriter);
+		for(Cliente cliente : lista) {
+			bs.append("Nome:" + cliente.getNome() + "\n");
+			bs.append("CNPJ:" + cliente.getCnpj() + "\n");
+			bs.append("CPF:" + cliente.getCpf() + "\n");
+			bs.append("Endereço:" + cliente.getEndereco() + "\n");
+			bs.append("Cidade:" + cliente.getCidade() + "\n");
+			bs.append("Estado:" + cliente.getEstado() + "\n----------------------\n");
+		}
+		salvarClientesBancoDosObjetos();
+		bs.close();
+	}
+	
 	
 	
 }
