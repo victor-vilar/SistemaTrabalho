@@ -1,4 +1,4 @@
-package br.com.landtecengenharia.sistemaInterno.cliente;
+package br.com.landtecengenharia.sistemaInterno.entities;
 import java.io.Serializable;
 public class Cliente implements Serializable{
 
