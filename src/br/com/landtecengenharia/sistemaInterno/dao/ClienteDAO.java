@@ -40,5 +40,20 @@ public class ClienteDAO {
 		
 	}
 	
+	public void deletar(int id) throws SQLException{
+		con.setAutoCommit(false);
+		String sql = "DELETE FROM CLIENTES WHERE ID = ?";
+		try(PreparedStatement query = con.prepareStatement(sql)){
+			query.setInt(1, id);
+			query.execute();
+			con.commit();
+			
+		}catch(SQLException e) {
+			con.rollback();
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
 	
 }

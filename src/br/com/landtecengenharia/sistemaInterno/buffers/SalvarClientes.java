@@ -66,11 +66,8 @@ public class SalvarClientes {
 		BufferedWriter bs = new BufferedWriter(fileWriter);
 		for(Cliente cliente : lista) {
 			bs.append("Nome:" + cliente.getNome() + "\n");
-			bs.append("CNPJ:" + cliente.getCnpj() + "\n");
-			bs.append("CPF:" + cliente.getCpf() + "\n");
-			bs.append("Endereço:" + cliente.getEndereco() + "\n");
-			bs.append("Cidade:" + cliente.getCidade() + "\n");
-			bs.append("Estado:" + cliente.getEstado() + "\n----------------------\n");
+			bs.append("CNPJ:" + cliente.getCpfCnpj() + "\n");
+
 		}
 		salvarClientesBancoDosObjetos();
 		bs.close();
