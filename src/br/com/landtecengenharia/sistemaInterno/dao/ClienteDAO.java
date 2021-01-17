@@ -18,24 +18,41 @@ public class ClienteDAO {
 	}
 	
 	public void salvar(Cliente cliente)throws SQLException {
+		
+		//setando sql
 		con.setAutoCommit(false);
 		String sql = "INSERT INTO CLIENTES(nome,cnpjcpf)VALUES(?,?)";
 		
+		//criando query
 		try(PreparedStatement query = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
+			
+			//setando as variaveis
 			query.setString(1, cliente.getNome());
 			query.setString(2, cliente.getCpfCnpj());
+			
+			//executando
 			query.execute();
 			con.commit();
 			
-			try(ResultSet rst = query.getGeneratedKeys()){
-				while(rst.next()) {
-					System.out.println("Cliente salvo no banco: ");
-					System.out.println(rst.getString(2));
+			
+			//se a lista de contatos for maior que zero
+			if(cliente.ContatosTamanho() > 0) {
+				
+				//pegara o id criado no banco
+				try(ResultSet rst = query.getGeneratedKeys()){
+					while(rst.next()) {
+						int idCliente = rst.getInt(1);
+					
+						// chamara metodo para gravar os contatos
+						gravarContatoDoCliente(idCliente, cliente);
+					}
+
 				}
 			}
 			
 		}catch(SQLException e ) {
 			System.out.println(e.getMessage());
+			con.rollback();
 		}
 		
 	}
@@ -53,6 +70,32 @@ public class ClienteDAO {
 			System.out.println(e.getMessage());
 		}
 		
+	}
+	
+	public void gravarContatoDoCliente(int id, Cliente cliente) {
+		
+		//setando sql
+		String sql = "INSERT INTO CONTATOS(nome,telefone,email,id_cliente)"
+				+ "values(?,?,?,?)";
+		
+		
+		//setando query
+		try(PreparedStatement query = con.prepareStatement(sql)){
+			con.setAutoCommit(false);
+			
+			//fazendo loop em cada um dos contatos
+			for(int x = 0; x < cliente.ContatosTamanho(); x++ ) {
+				query.setString(1,cliente.contatosPosicao(x).getName());
+				query.setString(2,cliente.contatosPosicao(x).getTelefone());
+				query.setString(3,cliente.contatosPosicao(x).getEmail());
+				query.setInt(4,id);
+				query.execute();	
+			}
+			con.commit();
+			
+		}catch(SQLException e) {
+			
+		}
 	}
 	
 	

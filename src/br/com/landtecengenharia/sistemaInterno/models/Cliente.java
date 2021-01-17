@@ -8,6 +8,7 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String cpfcnpj;
 	private List<Address> enderecos = new ArrayList<>();
+	private List<Contato> contatos = new ArrayList<>();
 	
 
 	public Cliente(String nome, String cpfcnpj) {
@@ -23,8 +24,24 @@ public class Cliente implements Serializable{
 		return cpfcnpj;
 	}
 	
+	public void addContato(Contato contato) {
+		this.contatos.add(contato);
+	}
+	
 	public void addEndereco(Address endereco) {
 		this.enderecos.add(endereco);
+	}
+	
+	public int ContatosTamanho() {
+		return this.contatos.size();
+	}
+	
+	public Contato contatosPosicao(int i) {
+		return this.contatos.get(i);
+	}
+	
+	public String toString() {
+		return this.getNome() + " - " + this.getCpfCnpj();
 	}
 		
 }
