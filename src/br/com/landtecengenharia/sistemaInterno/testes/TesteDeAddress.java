@@ -7,7 +7,7 @@ public class TesteDeAddress {
 	public static void main(String[] args) {
 		
 		Address endereco = new Address.AddressBuilder
-				("Rua Marechal Floriano", "49","Duque de Caxias","Rio de Janeiro")
+				("Rua Marechal Floriano", "49","Duque de Caxias","Rio de Janeiro",true)
 				.Complemento("apt 205")
 				.Cep("25075025").build();
 

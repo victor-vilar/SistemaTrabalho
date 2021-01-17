@@ -7,6 +7,7 @@ public class Address {
 	private String numero;
 	private String cidade;
 	private String estado;
+	private boolean principal = false;
 	
 	//optional parameters
 	private String complemento;
@@ -20,17 +21,19 @@ public class Address {
 		private String numero;
 		private String cidade;
 		private String estado;
+		private boolean principal = false;
 		
 		//optional parameters
 		private String complemento;
 		private String cep;
 		
 		
-		public AddressBuilder(String endereco, String numero, String cidade, String estado) {
+		public AddressBuilder(String endereco, String numero, String cidade, String estado, boolean principal) {
 			this.endereco = endereco;
 			this.numero = numero;
 			this.cidade = cidade;
 			this.estado = estado;
+			this.principal = principal;
 		}
 		
 		public AddressBuilder Complemento(String complemento) {
