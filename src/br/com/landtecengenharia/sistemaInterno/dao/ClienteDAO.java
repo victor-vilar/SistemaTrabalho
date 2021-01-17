@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import br.com.landtecengenharia.sistemaInterno.entities.Cliente;
+import br.com.landtecengenharia.sistemaInterno.models.Cliente;
 
 public class ClienteDAO {
 

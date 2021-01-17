@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import br.com.landtecengenharia.sistemaInterno.entities.Cliente;
+import br.com.landtecengenharia.sistemaInterno.models.Cliente;
 
 
 

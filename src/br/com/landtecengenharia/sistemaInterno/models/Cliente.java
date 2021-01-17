@@ -1,4 +1,4 @@
-package br.com.landtecengenharia.sistemaInterno.entities;
+package br.com.landtecengenharia.sistemaInterno.models;
 import java.io.Serializable;
 
 public class Cliente implements Serializable{
