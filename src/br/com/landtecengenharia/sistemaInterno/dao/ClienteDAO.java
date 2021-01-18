@@ -17,6 +17,7 @@ public class ClienteDAO {
 
 	}
 	
+	//salavando o cliente no banco
 	public void salvar(Cliente cliente)throws SQLException {
 		
 		//setando sql
@@ -40,6 +41,8 @@ public class ClienteDAO {
 				
 				//pegara o id criado no banco
 				try(ResultSet rst = query.getGeneratedKeys()){
+					
+					//iterando sobre os codigos
 					while(rst.next()) {
 						int idCliente = rst.getInt(1);
 					
@@ -49,6 +52,14 @@ public class ClienteDAO {
 
 				}
 			}
+			//----------------------
+			
+			
+			//se a lista de endereços for maior que zero
+			if(cliente.enderecosTamanho() > 0 ) {
+				
+			}
+			//-----------------------
 			
 		}catch(SQLException e ) {
 			System.out.println(e.getMessage());
@@ -57,6 +68,7 @@ public class ClienteDAO {
 		
 	}
 	
+	//deletando cliente por id
 	public void deletar(int id) throws SQLException{
 		con.setAutoCommit(false);
 		String sql = "DELETE FROM CLIENTES WHERE ID = ?";
@@ -72,7 +84,9 @@ public class ClienteDAO {
 		
 	}
 	
-	public void gravarContatoDoCliente(int id, Cliente cliente) {
+	
+	//gravar os contatos do cliente
+	public void gravarContatoDoCliente(int id, Cliente cliente) throws SQLException {
 		
 		//setando sql
 		String sql = "INSERT INTO CONTATOS(nome,telefone,email,id_cliente)"
@@ -85,16 +99,23 @@ public class ClienteDAO {
 			
 			//fazendo loop em cada um dos contatos
 			for(int x = 0; x < cliente.ContatosTamanho(); x++ ) {
+				
+				//colocando as informações
 				query.setString(1,cliente.contatosPosicao(x).getName());
 				query.setString(2,cliente.contatosPosicao(x).getTelefone());
 				query.setString(3,cliente.contatosPosicao(x).getEmail());
 				query.setInt(4,id);
 				query.execute();	
+			
 			}
+			
+			//commitando query
 			con.commit();
+	
 			
 		}catch(SQLException e) {
-			
+			System.out.println(e.getMessage());
+			con.rollback();
 		}
 	}
 	

@@ -10,8 +10,6 @@ import br.com.landtecengenharia.sistemaInterno.models.Contato;
 public class TesteDeClientes {
 
 		public static void main(String[] args) {
-		
-			
 			
 			
 			//novo cliente
@@ -30,15 +28,16 @@ public class TesteDeClientes {
 			restaurante.addContato(joaozin);
 			restaurante.addContato(mariazin);
 			
-			//novo clienteDAO
+			
+			//novo endereco
+			//Address endereco = new Address()
+			
+			
 			try {
 				
+				//novo clienteDAO
 				ClienteDAO clientedao = new ClienteDAO(new ConnectionBuilder().getConnection());
-				
 
-
-				
-				
 				//gravar no banco
 				clientedao.salvar(restaurante);
 				

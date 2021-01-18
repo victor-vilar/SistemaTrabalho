@@ -36,6 +36,10 @@ public class Cliente implements Serializable{
 		return this.contatos.size();
 	}
 	
+	public int enderecosTamanho() {
+		return this.enderecos.size();
+	}
+	
 	public Contato contatosPosicao(int i) {
 		return this.contatos.get(i);
 	}
