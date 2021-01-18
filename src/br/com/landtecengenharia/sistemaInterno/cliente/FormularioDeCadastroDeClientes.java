@@ -1,5 +1,6 @@
 package br.com.landtecengenharia.sistemaInterno.cliente;
 
+import java.awt.Color;
 import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 public class FormularioDeCadastroDeClientes {
 	
 	JFrame frame;
@@ -22,35 +24,69 @@ public class FormularioDeCadastroDeClientes {
 	
 	public FormularioDeCadastroDeClientes(){
 		
-		//objetos
+	
 		//labels
+		
 		l1 = new Label("Nome:");
+		l1.setBounds(5,5, 100, 30);
+		
 		cnpj = new Label("CNPJ:");
+		cnpj.setBounds(200,60, 200, 20);
+		
 		cpf = new Label("CPF:");
+		cpf.setBounds(5,60, 200, 20);
+		
 		//botoes
-		frame = new JFrame();
 		botaoSalvar = new JButton("Salvar");
+		botaoSalvar.setBounds(5,225,100,30);	
+		
 		botaoFechar = new JButton("Fechar");
+		botaoFechar.setBounds(110,225,100,30);
+		
+		
 		//textfield
 		nomeDoCliente = new TextField("", 255);
-		cnpjDoCliente = new TextField("", 14);
-		cpfDoCliente = new TextField("", 11);
+		nomeDoCliente.setBounds(5,30, 475, 20);
 		
+		cnpjDoCliente = new TextField("", 14);
+		cnpjDoCliente.setBounds(200,80, 150, 20);
+		
+		cpfDoCliente = new TextField("", 11);
+		cpfDoCliente.setBounds(5,80, 150, 20);
+
+		
+		//jPanel
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.black);
+		panel.setBounds(0,0,500,500);
+		panel.add(botaoSalvar);
+		panel.add(botaoFechar);
+		panel.add(nomeDoCliente);
+		panel.add(l1);
+		panel.add(cnpj);
+		panel.add(cpf);
+		panel.add(cpfDoCliente);
+
 		//----------
 		//adicionando no formulario
-		frame.add(botaoSalvar);
-		frame.add(botaoFechar);		
-		frame.add(nomeDoCliente);
-		frame.add(l1);
-		frame.add(cnpj);
-		frame.add(cnpjDoCliente);
-		frame.add(cpf);
-		frame.add(cpfDoCliente);
+		frame = new JFrame();
+		frame.add(panel);
 		//------------------------------------
 		
 		//adicionando os listeneres nos botoes
-		botaoSalvar.addActionListener(new SaveMessengerListener());
-		botaoFechar.addActionListener(new TurnOffProgram());
+		botaoSalvar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Cliente " + nomeDoCliente.getText() + " salvo com sucesso !");
+			}
+		});
+		
+		botaoFechar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		//------------------------------------
 		
 		//informaçoes da janela
@@ -62,36 +98,9 @@ public class FormularioDeCadastroDeClientes {
 		frame.setResizable(false);
 		//------------------------------------
 		
-		//informações dos objetos
-		//botoes
-		botaoSalvar.setBounds(5,225,100,30);					
-		botaoFechar.setBounds(110,225,100,30);
-		//labels
-		cpf.setBounds(5,60, 200, 20);
-		cnpj.setBounds(200,60, 200, 20);
-		l1.setBounds(5,5, 100, 30);
-		//textfield
-		nomeDoCliente.setBounds(5,30, 475, 20);
-		cnpjDoCliente.setBounds(200,80, 150, 20);
-		cpfDoCliente.setBounds(5,80, 150, 20);
-		//------------------------------------
-		
 	}
 	
-	
-	class SaveMessengerListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(null,"Cliente " + nomeDoCliente.getText() + " salvo com sucesso !");
-		}
-	}
-	
-	class TurnOffProgram implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-		}
-	}
+
 	
 	
 	public static void main(String[] args) {
