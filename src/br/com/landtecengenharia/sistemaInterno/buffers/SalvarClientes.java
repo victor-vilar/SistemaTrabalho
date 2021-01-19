@@ -1,4 +1,4 @@
-package br.com.landtecengenharia.sistemaInterno.cliente;
+package br.com.landtecengenharia.sistemaInterno.buffers;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import br.com.landtecengenharia.sistemaInterno.models.Cliente;
 
 
 
@@ -64,11 +66,8 @@ public class SalvarClientes {
 		BufferedWriter bs = new BufferedWriter(fileWriter);
 		for(Cliente cliente : lista) {
 			bs.append("Nome:" + cliente.getNome() + "\n");
-			bs.append("CNPJ:" + cliente.getCnpj() + "\n");
-			bs.append("CPF:" + cliente.getCpf() + "\n");
-			bs.append("Endereço:" + cliente.getEndereco() + "\n");
-			bs.append("Cidade:" + cliente.getCidade() + "\n");
-			bs.append("Estado:" + cliente.getEstado() + "\n----------------------\n");
+			bs.append("CNPJ:" + cliente.getCpfCnpj() + "\n");
+
 		}
 		salvarClientesBancoDosObjetos();
 		bs.close();
